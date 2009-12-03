@@ -1,0 +1,22 @@
+set ignorecase 
+set nocompatible " get out of horrible vi-compatible mode
+filetype on " detect the type of file
+set history=1000 " How many lines of history to remember
+set cf " enable error files and error jumping
+filetype plugin on " load filetype plugins
+syntax enable
+set hlsearch
+let g:tex_flavor='latex'
+let g:Tex_FoldedSections=''
+let g:Tex_FoldedEnvironments=''
+let g:Tex_FoldedMisc=''
+if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+    	    \	if &omnifunc == "" |
+    	    \		setlocal omnifunc=syntaxcomplete#Complete |
+    	    \	endif
+endif
+
+set ts=4 sts=4 sw=4 expandtab smartindent
+set mouse=a
+"colorscheme desert
