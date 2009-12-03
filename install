@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+force=""
+if [ "$1" = "-f" ]; then
+    force="-f"
+fi
+for f in configuration-files/*; do
+    echo mv $force $f ~/.`basename $f`
+done
+
