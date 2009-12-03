@@ -1,0 +1,24 @@
+" Tex_vect: enclose the previous letter/number in \mathcal {{{
+" Description:
+function! My_VectThis()
+	let line = getline(line("."))
+	let char = line[col(".")-2]
+
+	if char =~ '[a-zA-Z0-9]'
+		return "\<BS>".'\vect{'.char.'}'
+	else
+		return IMAP_PutTextWithMovement('\vect{<++>}<++>')
+	endif
+endfunction
+" }}}
+
+
+inoremap <silent> <Plug>My_VectThis <C-r>=My_VectThis()<CR>
+call Tex_MakeMap('<M-v>', '<Plug>My_VectThis', 'i', '<buffer> <silent>')
+
+set spell spelllang=en_gb
+set spellfile='words'
+
+let g:Tex_DefaultTargetFormat='pdf'
+
+let g:Tex_FoldedSections=''
