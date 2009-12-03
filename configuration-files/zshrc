@@ -1,0 +1,112 @@
+HISTFILE=~/.zsh_history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+PS1="%n@%m:%/ %(!.#.§)"
+RPROMPT="%(?..%B!!!!!%b)"
+
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+bindkey -e
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
+bindkey "^O" accept-line-and-down-history
+bindkey "^[?" insert-last-word
+
+zstyle :compinstall filename '/home/luis/.zshrc'
+zstyle ':completion:*:*:*:*' menu select interactive
+
+autoload -U compinit
+compinit
+
+setopt append_history
+setopt hist_ignore_dups
+setopt hist_save_no_dups
+setopt hist_reduce_blanks
+setopt rcs
+setopt global_rcs
+setopt auto_cd
+setopt auto_pushd
+unsetopt promptcr
+
+alias -g '...'='../..'
+alias -g '....'='../../..'
+alias -g '.....'='../../../..'
+alias -g '......'='../../../../..'
+alias -g '.......'='../../../../../..'
+
+# Ignore CVS directories
+zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS' 
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS' 
+zstyle ':completion:*:cd:*' tag-order local-directories
+
+# Make ssh@<TAB> autocomplete
+ssh_hosts_file="$HOME/.ssh/known_hosts"
+if [ -f $ssh_hosts_file ]; then
+	local _myhosts 
+	_myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} ) 
+	zstyle ':completion:*' hosts $_myhosts 
+fi
+
+autoload -U zmv
+alias mmv='noglob zmv -W'
+autoload -U zed
+autoload -U zcalc
+
+rename() {
+	newname=$1
+	vared -c -p 'rename to: ' newname
+	command mv $1 $newname
+}
+
+function cd () {
+	if [[ -z $2 ]]; then
+		if [[ -f $1 ]]; then
+			builtin cd $1:h
+		elif [[ -n $1 && $1:t = "ls" ]]; then
+			builtin cd $1:h && ls --color
+		else
+			builtin cd $1
+		fi
+	else
+		if [[ -z $3 ]]; then
+			builtin cd $1 $2
+		else
+			echo cd: too many arguments
+		fi
+	fi
+}
+
+
+
+chpwd() {
+ [[ -t 1 ]] || return
+ case $TERM in
+ sun-cmd) print -Pn "\e]l%n@%m<%l>:%~\e\\"
+ ;;
+ *xterm*|rxvt|(dt|k|E)term) print -Pn "\e]0;%H:%~\a"
+ ;;
+ esac
+}
+
+alias ls="ls --color=auto"
+alias pylab="ipython -pylab"
+cdpath=($HOME $HOME/work $cdpath)
+function field() {
+    N=$1
+    [[ -n $N ]] || { echo 'field N'; return 1; }
+    gawk "{print \$$N;}"
+}
+
+
+
+sourceifexists() {
+	if [ -f $1 ] ; then source $1 ; fi
+}
+sourceifexists ~/config/bazshrc
+sourceifexists ~/config/zsh_keep
+sourceifexists ~/localconfig/zshrc
+
