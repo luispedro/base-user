@@ -1,0 +1,16 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	name = Luís Pedro Coelho
+	email = lpc@cmu.edu
+[alias]
+    st = status
+    di = diff
+    co = checkout
+    ci = commit
+    br = branch
+    sta = stash
+[push]
+	default = matching
