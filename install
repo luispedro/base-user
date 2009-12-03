@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-force=""
+force="-i"
 if [ "$1" = "-f" ]; then
     force="-f"
 fi
 for f in configuration-files/*; do
-    echo mv $force $f ~/.`basename $f`
+    cp $force $f ~/.`basename $f`
 done
 
