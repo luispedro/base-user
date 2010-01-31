@@ -3,14 +3,14 @@
 	status = auto
 	branch = auto
 [user]
-	name = Luís Pedro Coelho
+	name = Luis Pedro Coelho
 	email = lpc@cmu.edu
 [alias]
-    st = status
-    di = diff
-    co = checkout
-    ci = commit
-    br = branch
-    sta = stash
+	st = status
+	di = diff
+	co = checkout
+	ci = commit
+	br = branch
+	sta = stash
 [push]
 	default = matching
