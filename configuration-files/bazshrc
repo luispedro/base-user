@@ -1,0 +1,4 @@
+updateubuntu() {
+    sudo aptitude update && sudo aptitude dist-upgrade
+}
+
