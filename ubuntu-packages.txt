@@ -1,0 +1,5 @@
+# These are some basic packages for a system
+
+sudo install \
+    ipython \
+
