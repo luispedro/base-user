@@ -1,6 +1,8 @@
 # These are some basic packages for a system
 
 sudo aptitude install \
+    vim \
+    zsh \
     ipython \
     python-virtualenv \
     python-pip \
