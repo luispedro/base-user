@@ -1,5 +1,8 @@
 # These are some basic packages for a system
 
-sudo install \
+sudo aptitude install \
     ipython \
+    python-virtualenv \
+    python-pip \
+    python-dev \
 
