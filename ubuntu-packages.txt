@@ -7,4 +7,5 @@ sudo aptitude install \
     python-virtualenv \
     python-pip \
     python-dev \
+    python-setuptools \
 
