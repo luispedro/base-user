@@ -8,4 +8,5 @@ sudo aptitude install \
     python-pip \
     python-dev \
     python-setuptools \
+    tofrodos \
 
