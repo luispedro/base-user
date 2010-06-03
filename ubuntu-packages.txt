@@ -10,3 +10,7 @@ sudo aptitude install \
     python-setuptools \
     tofrodos \
 
+
+sudo aptitude install \
+    pdflatex \
+
