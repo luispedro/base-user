@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 @arglist = @ARGV;
 $arglistsize = scalar @arglist;
 
@@ -295,7 +295,7 @@ sub writeShellScript
 	$tempscriptname = "$note$$-$_[1]";
 	$tempscriptpath = "/home/$ENV{'LOGNAME'}/.qarray-pid/scripts/$tempscriptname.sh";
 
-	system("cp /usr/local/cbi_cluster/bin/blank.sh $tempscriptpath");
+	system("cp /home/lcoelho/user/scripts/blank.sh $tempscriptpath");
 	
 	open($tempScript,"+>>$tempscriptpath");
 
