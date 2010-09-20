@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+from os import popen
+from os.path import exists
+import re
+import sys
+pat = re.compile(r'([0-9]+)\.compute.* q([0-9]+)-X.sh *lcoelho.*([0-9:]{8}| {7}0) (R|S|Q).*')
+doheader = sys.argv[0].find('nnqstat') == -1
+cmdpat = None
+if len(sys.argv) > 1:
+    cmdpat = sys.argv[1]
+try:
+    input = popen('qstat')
+    for line in input:
+        if doheader:
+            print '%-12s %-8s      %-8s        %s' % ('Job ID', 'Queue ID', 'Time', 'Command')
+            print '-' * 50
+            doheader = False
+        M = pat.match(line)
+        if M is None: continue
+        jobid,qid,time,status = M.groups()
+        cmdline = None
+        if status == 'Q':
+            time = '  Queued'
+        for line in file('/home/lcoelho/.qarray-pid/%s.log' % qid):
+            if line.startswith('qarray '):
+                cmdline = line[len('qarray '):].strip()
+        if cmdpat is not None and cmdline.find(cmdpat) == -1:
+            continue
+        print '%-12s %-8s      %-8s        %s' % (jobid, qid, time, cmdline)
+except Exception,e:
+    print e
