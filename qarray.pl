@@ -20,7 +20,7 @@ elsif($arglistsize eq "1")
 	$scriptToCall = writeShellScript($commlistref,"X",$mat);
 
 	print "qsub $scriptToCall\n";
-	$qsubout = `qsub $scriptToCall`;
+	$qsubout = `qsub -q pool1 $scriptToCall`;
 	print "$qsubout\n";
 
 	&writeLog($arglistref,"single",$mat);
