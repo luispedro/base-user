@@ -26,11 +26,20 @@ def create_directories(dname):
 home = os.environ["HOME"]
 
 def write_shell_script(args):
+    command = " ".join(map(quote, args))
     outputname = home + '/.qarray-pid/scripts/q%s.sh' % os.getpid()
+    logname = home + '/.qarray-pid/%s.log' % os.getpid()
     output = file(outputname, 'w')
+    name = "_".join(args)
+    name = name.replace(' ', '_')
+    if name.startswith("jug_execute_"):
+        name = "jug_" + name[len("jug_execute_"):]
+    name = "%s.%s" % (os.getpid(),name)
+    name = name[:15]
     print >>output, '''
 #!/bin/bash
 #
+#PBS -N %s
 #$ -j y
 #$ -S /bin/bash
 #$ -cwd
@@ -38,7 +47,7 @@ def write_shell_script(args):
 #$ -o q%s.stdout
 #$ -e q%s.stderr
 
-''' % (os.getpid(), os.getpid())
+''' % (name, os.getpid(), os.getpid())
     for k_v in os.environ.iteritems():
         print >>output, '%s="%s"' % k_v
     print >>output,'''
@@ -53,9 +62,16 @@ cd %s
 
 %s
 
-''' % (os.getcwd(), " ".join(map(quote,args)))
+# self-destruct
+rm %s
 
+''' % (os.getcwd(), command, outputname)
     output.close()
+
+    log = file(logname, 'w')
+    print >>log, command
+    print >>log, outputname
+    log.close()
     return outputname
 
 
