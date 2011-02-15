@@ -43,13 +43,12 @@ def write_shell_script(args):
 #$ -j y
 #$ -S /bin/bash
 #$ -cwd
+#$ -V
 
 #$ -o q%s.stdout
 #$ -e q%s.stderr
 
 ''' % (name, os.getpid(), os.getpid())
-    for k_v in os.environ.iteritems():
-        print >>output, '%s="%s"' % k_v
     print >>output,'''
 
 echo
@@ -64,8 +63,9 @@ cd %s
 
 # self-destruct
 rm %s
+rm %s
 
-''' % (os.getcwd(), command, outputname)
+''' % (os.getcwd(), command, outputname, logname)
     output.close()
 
     log = file(logname, 'w')
@@ -93,8 +93,9 @@ def main():
     command = sys.argv[1:]
     create_directories(home + '/.qarray-pid/scripts')
     script = write_shell_script(command)
-    print("qsub -q pool1 %s" % script)
-    os.system("qsub -q pool1 %s" % script)
+    command = "qsub -V -q pool1 %s" % script
+    #print command
+    os.system(command)
 
 if __name__ == '__main__':
     main()
