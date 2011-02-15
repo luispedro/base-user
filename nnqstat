@@ -7,6 +7,19 @@ pat = re.compile(r'([0-9]+)\.lanec1 +([0-9]+)\.[^ ]* *lcoelho.*([0-9:]{8}| {7}0)
 doheader = sys.argv[0].find('nnqstat') == -1
 cmdpat = None
 if len(sys.argv) > 1:
+    if sys.argv[1] in ('-h', '--help'):
+        print '''\
+nnqstat [pattern]
+
+Print all jobs that match the regex `pattern`.
+If pattern is not given, print all jobs.
+
+Print Format
+------------
+Job ID      Queue ID      Time     Command
+
+'''
+        sys.exit(0)
     cmdpat = sys.argv[1]
 try:
     input = popen('qstat')
