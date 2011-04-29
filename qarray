@@ -40,13 +40,11 @@ def write_shell_script(args):
 #!/bin/bash
 #
 #PBS -N %s
-#$ -j y
-#$ -S /bin/bash
-#$ -cwd
-#$ -V
+#PBS -S /bin/bash
+#PBS -V
 
-#$ -o q%s.stdout
-#$ -e q%s.stderr
+#PBS -o q%s.stdout
+#PBS -e q%s.stderr
 
 ''' % (name, os.getpid(), os.getpid())
     print >>output,'''
