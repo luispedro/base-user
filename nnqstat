@@ -3,7 +3,7 @@ from os import popen
 from os.path import exists
 import re
 import sys
-pat = re.compile(r'([0-9]+)\.lanec1 +([0-9]+)\.[^ ]* *lcoelho.*([0-9:]{8}| {7}0) (R|S|Q).*')
+pat = re.compile(r'([0-9]+)\.lanec1 +([0-9a-zA-Z]{8})\.[^ ]* *lcoelho.*([0-9:]{8}| {7}0) (R|S|Q).*')
 doheader = sys.argv[0].find('nnqstat') == -1
 cmdpat = None
 if len(sys.argv) > 1:
