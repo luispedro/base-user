@@ -30,7 +30,7 @@ def slug():
     chars="qwertyuiopasdfghjklxzxcvbnm1234567890QWERTYUIOPASDFGHJKLXZXCVBNM"
     return ''.join([random.choice(chars) for i in xrange(8)])
 
-def write_shell_script(args):
+def write_shell_script(args, options):
     command = " ".join(map(quote, args))
     code = slug()
     outputname = home + '/.qarray-pid/scripts/q%s.sh' % code
@@ -42,17 +42,31 @@ def write_shell_script(args):
         name = "j_" + name[len("jug_execute_"):]
     name = "%s.%s" % (code,name)
     name = name[:15]
+    extra_headers = ''
+    for opt in options:
+        if opt.startswith('--cpus='):
+            nr_cpus = opt[len('--cpus='):]
+            extra_headers += ('#PBS -l ncpus=%s\n' % nr_cpus)
+        elif opt.startswith('--mem='):
+            mem = opt[len('--mem='):]
+            extra_headers += ('#PBS -l mem=%s\n' % mem)
+        elif opt.startswith('--hours='):
+            nr_hours = opt[len('--hours='):]
+            extra_headers += ('#PBS -l walltime=%s:00:00\n' % nr_hours)
+        else:
+            raise ValueError('misunderstood option: ' + opt)
     print >>output, '''
 #!/bin/bash
 #
 #PBS -N %s
 #PBS -S /bin/bash
 #PBS -V
+%s
 
 #PBS -o q___%s.out
 #PBS -e q___%s.err
 
-''' % (name, code, code)
+''' % (name, extra_headers, code, code)
     print >>output,'''
 
 echo
@@ -82,21 +96,28 @@ rm %s
 def usage():
     print '''\
 ----------------------
-Usage : qarray command
+Usage : qarray [extra_args] command
 ----------------------
 
 
 EXAMPLES
    qarray command...
+   qarray --cpus=8 --hours=24 command...
 '''
 
 def main():
-    if len(sys.argv) == 1:
+    options = []
+    i = 1
+    while i < len(sys.argv) and sys.argv[i][0] == '-':
+        options.append(sys.argv[i])
+        i += 1
+    command = sys.argv[i:]
+    if not command:
         usage()
         return
-    command = sys.argv[1:]
+
     create_directories(home + '/.qarray-pid/scripts')
-    script = write_shell_script(command)
+    script = write_shell_script(command, options)
     command = "qsub -V -q pool1 %s" % script
     #print command
     os.system(command)
