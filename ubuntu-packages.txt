@@ -13,4 +13,7 @@ sudo aptitude install \
 
 sudo aptitude install \
     pdflatex \
+    vim-latexsuite \
+
+sudo vim-addons -w install latex-suite
 
