@@ -1,6 +1,6 @@
 # These are some basic packages for a system
 
-sudo aptitude install \
+sudo apt-get install \
     vim \
     zsh \
     ipython \
@@ -11,8 +11,8 @@ sudo aptitude install \
     tofrodos \
 
 
-sudo aptitude install \
-    pdflatex \
+sudo apt-get install \
+    texlive \
     vim-latexsuite \
 
 sudo vim-addons -w install latex-suite
