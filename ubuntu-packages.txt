@@ -9,6 +9,8 @@ sudo apt-get install \
     python-dev \
     python-setuptools \
     tofrodos \
+    git \
+    gawk \
 
 
 sudo apt-get install \
