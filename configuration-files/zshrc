@@ -97,7 +97,7 @@ chpwd() {
 }
 
 alias ls="ls --color=auto"
-alias pylab="ipython -pylab"
+alias pylab="ipython --pylab=qt"
 cdpath=($HOME $HOME/work $cdpath)
 function field() {
     N=$1
