@@ -113,4 +113,5 @@ sourceifexists() {
 sourceifexists ~/config/bazshrc
 sourceifexists ~/config/zsh_keep
 sourceifexists ~/.zshrc_local
+sourceifexists ~/.virtualenv/bin/activate
 
