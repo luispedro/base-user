@@ -16,3 +16,5 @@
 	default = matching
 [core]
     editor = vim
+[diff "odf"]
+    textconv=odt2txt
