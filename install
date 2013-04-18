@@ -10,5 +10,9 @@ done
 
 if ! test -d ~/.virtualenv; then
     virtualenv --system-site-packages ~/.virtualenv
+    echo "Install nose inside virtualenv? [y/n]"
+    if test `read -y` -eq "y"; then
+        pip install nose
+    fi
 fi
 
