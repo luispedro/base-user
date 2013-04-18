@@ -15,7 +15,15 @@ sudo apt-get install \
 
 sudo apt-get install \
     texlive \
-    vim-latexsuite \
-
+    vim-latexsuite  && \
 sudo vim-addons -w install latex-suite
+
+
+sudo apt-get install \
+    ttf-inconsolata \
+    ttf-dejavu \
+    ttf-dejavu-core \
+    ttf-dejavu-core \
+    ttf-linux-libertine
+
 
