@@ -41,6 +41,7 @@ alias -g '....'='../../..'
 alias -g '.....'='../../../..'
 alias -g '......'='../../../../..'
 alias -g '.......'='../../../../../..'
+alias open=xdg-open
 
 # Ignore CVS directories
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS' 
