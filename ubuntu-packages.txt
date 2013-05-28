@@ -1,7 +1,8 @@
 # These are some basic packages for a system
 
+# We install vim-gtk to get +xterm_clipboard
 sudo apt-get install \
-    vim \
+    vim-gtk \
     zsh \
     ipython \
     python-virtualenv \
