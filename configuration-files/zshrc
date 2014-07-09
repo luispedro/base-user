@@ -20,7 +20,7 @@ bindkey "^K" kill-line
 bindkey "^O" accept-line-and-down-history
 bindkey "^[?" insert-last-word
 
-zstyle :compinstall filename '/home/luis/.zshrc'
+zstyle :compinstall filename '/home/luispedro/.zshrc'
 zstyle ':completion:*:*:*:*' menu select interactive
 
 autoload -U compinit
