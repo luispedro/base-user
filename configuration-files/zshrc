@@ -5,9 +5,9 @@ SAVEHIST=1000
 
 # Prompt of the form 'user@host:/path/ ' makes it easy to copy location with
 # mouse under X-windows.
-PS1="%n@%m:%/ %(!.#.§)"
+PS1="%n@%m:%/ %(?. .%B!%b)%(!.#.§)"
 # Warn me if the previous command failed
-RPROMPT="%(?..%B!!!!!%b)"
+RPROMPT=""
 
 # In particular / is NOT in this set (easier editing of paths)
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
