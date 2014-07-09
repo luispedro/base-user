@@ -19,4 +19,9 @@ endif
 
 set ts=4 sts=4 sw=4 expandtab smartindent
 set mouse=a
-"colorscheme desert
+set background=light
+colorscheme desert
+vnoremap < <gv
+vnoremap > >gv
+let mapleader=","
+let maplocalleader=";"
