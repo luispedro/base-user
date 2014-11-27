@@ -18,10 +18,31 @@ if has("autocmd") && exists("+omnifunc")
 endif
 
 set ts=4 sts=4 sw=4 expandtab smartindent
-set mouse=a
+
+" the mouse mode just does not work well enough. Disable it.
+set mouse=
 set background=light
 colorscheme desert
 vnoremap < <gv
 vnoremap > >gv
+
 let mapleader=","
 let maplocalleader=";"
+nnoremap <leader>v V`]
+
+" reflow paragaph
+nnoremap <leader>q gqip
+" New window & move focus there
+nnoremap <leader>w <C-w>v<C-w>l
+
+
+set undofile
+set undodir=$HOME/.vim/undo " where to save undo histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+
+" Make search default to global
+set gdefault
+
+" Get rid of search highlighting
+nnoremap <leader><space> :noh<cr>
