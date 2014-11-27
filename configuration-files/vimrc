@@ -1,14 +1,18 @@
-set nocompatible
-
+set nocompatible " get out of horrible vi-compatible mode
 filetype off                  " required
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" This one is first as it is the basis
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'luispedro/vim-ipython'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-speeddating'
 Plugin 'kevinw/pyflakes-vim'
 Plugin 'gerw/vim-latex-suite'
+Plugin 'jceb/vim-orgmode'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -46,7 +50,7 @@ nnoremap <leader>v V`]
 
 " reflow paragaph
 nnoremap <leader>q gqip
-" New window & move focus there
+" Open a new window and switch to it:
 nnoremap <leader>w <C-w>v<C-w>l
 
 
@@ -61,3 +65,5 @@ set backspace=indent,eol,start
 
 " Get rid of search highlighting
 nnoremap <leader><space> :noh<cr>
+
+highlight SpellBad ctermbg=none cterm=undercurl
