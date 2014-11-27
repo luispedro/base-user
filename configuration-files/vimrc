@@ -1,6 +1,20 @@
-set ignorecase 
-set nocompatible " get out of horrible vi-compatible mode
+set nocompatible
+
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'luispedro/vim-ipython'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kevinw/pyflakes-vim'
+Plugin 'gerw/vim-latex-suite'
+
+call vundle#end()            " required
+filetype plugin indent on
 filetype on " detect the type of file
+
+set ignorecase
 set history=1000 " How many lines of history to remember
 set cf " enable error files and error jumping
 filetype plugin on " load filetype plugins
@@ -43,6 +57,7 @@ set undoreload=10000        " number of lines to save for undo
 
 " Make search default to global
 set gdefault
+set backspace=indent,eol,start
 
 " Get rid of search highlighting
 nnoremap <leader><space> :noh<cr>
