@@ -67,3 +67,11 @@ set backspace=indent,eol,start
 nnoremap <leader><space> :noh<cr>
 
 highlight SpellBad ctermbg=none cterm=undercurl
+
+" Fix vimdiff on light backgrounds
+highlight SpellBad      ctermbg=none    cterm=undercurl
+highlight DiffDelete    ctermfg=black   ctermbg=grey
+highlight DiffText      ctermfg=red     ctermbg=DarkGray
+highlight DiffChange    ctermfg=black   cterm=none ctermbg=LightGrey
+highlight DiffAdd                       ctermbg=cyan cterm=bold
+
