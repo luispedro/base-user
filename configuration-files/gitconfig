@@ -16,5 +16,11 @@
 	default = matching
 [core]
     editor = vim
+    attributesfile = /home/luispedro/.gitattributes
 [diff "odf"]
     textconv=odt2txt
+[filter "dropoutput_ipynb"]
+    clean = /home/luispedro/work/base-user/scripts/ipynb_output_filter.py
+    smudge = cat
+[diff "ipynb_as_python"]
+    textconv = /home/luispedro/work/base-user/scripts/ipynb_to_simple_python.py
