@@ -8,11 +8,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'luispedro/vim-ipython'
+Plugin 'ivanov/vim-ipython'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-speeddating'
+Plugin 'luispedro/vim-ngless'
 Plugin 'kevinw/pyflakes-vim'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'jceb/vim-orgmode'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()            " required
 filetype plugin indent on
