@@ -17,7 +17,8 @@ Luis Pedro Coelho (luis@luispedro.org)
 """)
     sys.exit(1)
 
-json_in = read(open(sys.argv[1]), 'json')
+with open(sys.argv[1]) as ifile:
+    json_in = read(ifile, 'json')
 
 def add_linestart(content, header):
     '''Adds ``header`` to the start of every line in ``content``'''
