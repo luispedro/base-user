@@ -4,27 +4,9 @@
 sudo apt-get install \
     vim-gtk \
     zsh \
-    ipython \
-    python-virtualenv \
-    python-pip \
-    python-dev \
-    python-setuptools \
     tofrodos \
     git \
     gawk \
+    ccache
 
-
-sudo apt-get install \
-    texlive \
-    vim-latexsuite  && \
-sudo vim-addons -w install latex-suite
-
-
-sudo apt-get install \
-    ttf-inconsolata \
-    ttf-dejavu \
-    ttf-dejavu-core \
-    ttf-dejavu-core \
-    ttf-linux-libertine
-
-
+sudo apt-get install texlive
