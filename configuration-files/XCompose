@@ -189,7 +189,9 @@ include "%L"
 <Multi_key> <equal> <colon> 		: "≕"  U2255		# EQUALS COLON
 # Using <slash> conflicts.
 <Multi_key> <equal> <bar> <equal>	: "≢"	U2262		# NOT IDENTICAL TO
-# We already have ±
+
+# The original file claimed that "We already have ±", but it was not working
+<Multi_key> <plus> <minus>		: "±" UB1 # PLUS OR MINUS SIGN
 <Multi_key> <minus> <plus>		: "∓"	U2213		# MINUS OR PLUS SIGN
 <Multi_key> <s> <q>			: "√"	U221A		# SQUARE ROOT
 # keystrokes might not make the most sense, but you know what they mean...
