@@ -8,11 +8,3 @@ for f in configuration-files/*; do
     cp $force $f ~/.`basename $f`
 done
 
-if ! test -d ~/.virtualenv; then
-    virtualenv --system-site-packages ~/.virtualenv
-    echo "Install nose inside virtualenv? [y/n]"
-    if read -q; then
-        pip install nose
-    fi
-fi
-
