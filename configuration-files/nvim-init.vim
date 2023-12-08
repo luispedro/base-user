@@ -124,6 +124,7 @@ let g:deoplete#enable_at_startup = 1
 let g:nvim_ipy_perform_mappings = 0
 map <silent> <c-s>   <Plug>(IPy-Run)
 imap <silent> <c-s>   <ESC><Plug>(IPy-Run)i
+noremap Y Y
 
 luafile $HOME/.config/nvim/plugins.lua
 
