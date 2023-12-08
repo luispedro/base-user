@@ -65,6 +65,8 @@ set cf " enable error files and error jumping
 filetype plugin on " load filetype plugins
 syntax enable
 set hlsearch
+set nofoldenable
+
 let g:tex_flavor='latex'
 let g:Tex_FoldedSections=''
 let g:Tex_FoldedEnvironments=''
