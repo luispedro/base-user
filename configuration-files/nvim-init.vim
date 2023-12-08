@@ -7,6 +7,7 @@ Plug 'gmarik/Vundle.vim'
 Plug 'dense-analysis/ale'
 
 Plug 'Vigemus/iron.nvim'
+Plug 'github/copilot.vim'
 
 Plug 'bfredl/nvim-ipy'
 Plug 'tpope/vim-fugitive'
